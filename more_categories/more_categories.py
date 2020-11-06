@@ -8,7 +8,7 @@ Requirements: Pelican 3.8 or higher
 
 from pelican import signals
 from pelican.urlwrappers import URLWrapper
-from pelican.utils import (slugify, python_2_unicode_compatible)
+from pelican.utils import slugify
 
 from collections import defaultdict
 from six import text_type
@@ -41,7 +41,6 @@ class Category(URLWrapper):
             else:
                 subs = self.settings.get('SLUG_REGEX_SUBSTITUTIONS', [])
             self._slug = slugify(self.shortname, regex_subs=subs)
-            print(self._slug)
             if self.parent:
                 self._slug = self.parent.slug + '/' + self._slug
         return self._slug
